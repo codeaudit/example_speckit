@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { validateApplicationInput } from "@/lib/validation";
 import type { TransactionType } from "@/types";
 
 interface LoanFormProps {
   onSuccess: (data: { referenceNumber: string }) => void;
+  prefillName?: string;
+  prefillEmail?: string;
 }
 
-export default function LoanForm({ onSuccess }: LoanFormProps) {
-  const [applicantName, setApplicantName] = useState("");
-  const [applicantEmail, setApplicantEmail] = useState("");
+export default function LoanForm({ onSuccess, prefillName, prefillEmail }: LoanFormProps) {
+  const [applicantName, setApplicantName] = useState(prefillName || "");
+  const [applicantEmail, setApplicantEmail] = useState(prefillEmail || "");
   const [annualIncome, setAnnualIncome] = useState("");
   const [monthlyDebts, setMonthlyDebts] = useState("");
   const [creditScore, setCreditScore] = useState("");
@@ -21,6 +23,13 @@ export default function LoanForm({ onSuccess }: LoanFormProps) {
   const [interestRate, setInterestRate] = useState("");
   const [propertyValue, setPropertyValue] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
+
+  useEffect(() => {
+    if (prefillName !== undefined) setApplicantName(prefillName);
+  }, [prefillName]);
+  useEffect(() => {
+    if (prefillEmail !== undefined) setApplicantEmail(prefillEmail);
+  }, [prefillEmail]);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
@@ -83,21 +92,21 @@ export default function LoanForm({ onSuccess }: LoanFormProps) {
   }
 
   const fieldClass =
-    "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500";
-  const labelClass = "block text-sm font-medium text-gray-700";
-  const errorClass = "mt-1 text-xs text-red-600";
+    "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400";
+  const labelClass = "block text-sm font-medium text-gray-700 dark:text-gray-300";
+  const errorClass = "mt-1 text-xs text-red-600 dark:text-red-400";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {generalError && (
-        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700">
+        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
           {generalError}
         </div>
       )}
 
       {/* Applicant Info */}
       <fieldset className="space-y-4">
-        <legend className="text-base font-semibold text-gray-900">
+        <legend className="text-base font-semibold text-gray-900 dark:text-gray-100">
           Applicant Information
         </legend>
 
@@ -136,7 +145,7 @@ export default function LoanForm({ onSuccess }: LoanFormProps) {
 
       {/* Financial Info */}
       <fieldset className="space-y-4">
-        <legend className="text-base font-semibold text-gray-900">
+        <legend className="text-base font-semibold text-gray-900 dark:text-gray-100">
           Financial Information
         </legend>
 
@@ -195,7 +204,7 @@ export default function LoanForm({ onSuccess }: LoanFormProps) {
 
       {/* Loan Details */}
       <fieldset className="space-y-4">
-        <legend className="text-base font-semibold text-gray-900">
+        <legend className="text-base font-semibold text-gray-900 dark:text-gray-100">
           Loan Details
         </legend>
 
@@ -277,7 +286,7 @@ export default function LoanForm({ onSuccess }: LoanFormProps) {
 
       {/* Property Info */}
       <fieldset className="space-y-4">
-        <legend className="text-base font-semibold text-gray-900">
+        <legend className="text-base font-semibold text-gray-900 dark:text-gray-100">
           Property Information
         </legend>
 
@@ -319,7 +328,7 @@ export default function LoanForm({ onSuccess }: LoanFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
       >
         {loading ? "Submitting..." : "Submit Application"}
       </button>

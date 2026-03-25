@@ -100,3 +100,35 @@ export interface BorrowerStatusResponse {
   } | null;
   createdAt: string;
 }
+
+export interface Customer {
+  id: number;
+  fullName: string;
+  email: string;
+  phone: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  createdAt: string;
+}
+
+export interface CustomerSummary {
+  id: number;
+  fullName: string;
+  email: string;
+}
+
+export interface CustomerWithAppCount extends CustomerSummary {
+  applicationCount: number;
+}
+
+export interface CustomerApplication {
+  id: number;
+  referenceNumber: string;
+  loanAmount: number;
+  transactionType: string;
+  status: ApplicationStatus;
+  qualificationStatus: "Qualified" | "Not Qualified" | "N/A";
+  createdAt: string;
+}
