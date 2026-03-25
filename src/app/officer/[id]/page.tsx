@@ -34,18 +34,37 @@ export default function OfficerDetailPage() {
   }, [fetchApplication]);
 
   if (loading) {
-    return <p className="text-sm text-gray-500">Loading...</p>;
+    return (
+      <div className="space-y-6">
+        <div className="h-4 w-32 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+        <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-800">
+          <div className="h-6 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+          </div>
+        </div>
+        <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-800">
+          <div className="h-5 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
     return (
       <div>
-        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700">
+        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
           {error}
         </div>
         <Link
           href="/officer"
-          className="mt-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800"
+          className="mt-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
         >
           Back to Applications
         </Link>
@@ -59,7 +78,7 @@ export default function OfficerDetailPage() {
     <div>
       <Link
         href="/officer"
-        className="mb-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800"
+        className="mb-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
       >
         &larr; Back to Applications
       </Link>

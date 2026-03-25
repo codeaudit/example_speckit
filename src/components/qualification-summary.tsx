@@ -18,12 +18,12 @@ function Metric({
   pass: boolean;
 }) {
   return (
-    <div className="rounded-md border border-gray-200 bg-white p-3">
-      <p className="text-xs text-gray-500">{label}</p>
-      <p className={`text-lg font-semibold ${pass ? "text-green-700" : "text-red-700"}`}>
+    <div className="rounded-md border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
+      <p className="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">{label}</p>
+      <p className={`text-lg font-semibold ${pass ? "text-green-700 dark:text-green-400" : "text-red-700 dark:text-red-400"}`}>
         {value}
       </p>
-      <p className={`text-xs font-medium ${pass ? "text-green-600" : "text-red-600"}`}>
+      <p className={`text-xs font-medium ${pass ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
         {pass ? "Pass" : "Fail"}
       </p>
     </div>
@@ -42,11 +42,11 @@ export default function QualificationSummary({
       <div className="mb-4 flex items-center gap-3">
         <h3 className="text-base font-semibold">Qualification Summary</h3>
         {data.qualified ? (
-          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800">
+          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
             Qualified
           </span>
         ) : (
-          <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-800">
+          <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-200">
             Not Qualified
           </span>
         )}
@@ -54,19 +54,19 @@ export default function QualificationSummary({
 
       {/* Financial figures */}
       <div className="mb-4 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-md border border-gray-200 bg-white p-3">
-          <p className="text-xs text-gray-500">Gross Monthly Income (GMI)</p>
-          <p className="text-lg font-semibold">{formatCurrency(data.gmi)}</p>
+        <div className="rounded-md border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
+          <p className="text-xs text-gray-500 dark:text-gray-400">Gross Monthly Income (GMI)</p>
+          <p className="text-lg font-semibold dark:text-gray-200">{formatCurrency(data.gmi)}</p>
         </div>
-        <div className="rounded-md border border-gray-200 bg-white p-3">
-          <p className="text-xs text-gray-500">
+        <div className="rounded-md border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
             Proposed Housing Expense (PHE)
           </p>
-          <p className="text-lg font-semibold">{formatCurrency(data.phe)}</p>
+          <p className="text-lg font-semibold dark:text-gray-200">{formatCurrency(data.phe)}</p>
         </div>
-        <div className="rounded-md border border-gray-200 bg-white p-3">
-          <p className="text-xs text-gray-500">Total Monthly Debts (TMD)</p>
-          <p className="text-lg font-semibold">{formatCurrency(data.tmd)}</p>
+        <div className="rounded-md border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Monthly Debts (TMD)</p>
+          <p className="text-lg font-semibold dark:text-gray-200">{formatCurrency(data.tmd)}</p>
         </div>
       </div>
 
@@ -100,11 +100,11 @@ export default function QualificationSummary({
       </div>
 
       {data.failedTests.length > 0 && (
-        <div className="rounded-md bg-red-50 p-3">
-          <p className="mb-1 text-xs font-medium text-red-800">
+        <div className="rounded-md bg-red-50 p-3 dark:bg-red-900/20">
+          <p className="mb-1 text-xs font-medium text-red-800 dark:text-red-300">
             Failed Tests:
           </p>
-          <ul className="list-inside list-disc text-sm text-red-700">
+          <ul className="list-inside list-disc text-sm text-red-700 dark:text-red-400">
             {data.failedTests.map((test) => (
               <li key={test}>{test}</li>
             ))}

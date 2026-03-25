@@ -100,3 +100,21 @@ export interface BorrowerStatusResponse {
   } | null;
   createdAt: string;
 }
+
+export interface Customer {
+  id: number;
+  fullName: string;
+  email: string;
+  phone: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  createdAt: string;
+}
+
+export interface CustomerSummary {
+  id: number;
+  fullName: string;
+  email: string;
+}

@@ -1,5 +1,6 @@
 import Database from "better-sqlite3";
 import path from "path";
+import { seedCustomers } from "@/lib/seed-data";
 
 // For tests, allow in-memory database
 let db: Database.Database | null = null;
@@ -39,13 +40,14 @@ export function setDb(instance: Database.Database): void {
 
 interface Migration {
   version: number;
-  sql: string;
+  run: (db: Database.Database) => void;
 }
 
 const migrations: Migration[] = [
   {
     version: 1,
-    sql: `CREATE TABLE IF NOT EXISTS loan_applications (
+    run: (db) => {
+      db.exec(`CREATE TABLE IF NOT EXISTS loan_applications (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   reference_number TEXT NOT NULL UNIQUE,
   applicant_name TEXT NOT NULL,
@@ -62,18 +64,54 @@ const migrations: Migration[] = [
   status TEXT NOT NULL DEFAULT 'Pending' CHECK(status IN ('Pending', 'Approved', 'Rejected')),
   qualification_data TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
-);`,
+);`);
+    },
   },
   {
     version: 2,
-    sql: `CREATE TABLE IF NOT EXISTS decisions (
+    run: (db) => {
+      db.exec(`CREATE TABLE IF NOT EXISTS decisions (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   application_id INTEGER NOT NULL UNIQUE REFERENCES loan_applications(id),
   decision_type TEXT NOT NULL CHECK(decision_type IN ('Approved', 'Rejected')),
   decision_note TEXT,
   is_override INTEGER NOT NULL DEFAULT 0,
   decided_at TEXT NOT NULL DEFAULT (datetime('now'))
-);`,
+);`);
+    },
+  },
+  {
+    version: 3,
+    run: (db) => {
+      db.exec(`CREATE TABLE IF NOT EXISTS customers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  full_name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  phone TEXT NOT NULL,
+  street TEXT NOT NULL,
+  city TEXT NOT NULL,
+  state TEXT NOT NULL,
+  zip_code TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);`);
+
+      // Seed data only if table is empty (idempotent per FR-003)
+      const count = db.prepare("SELECT COUNT(*) as cnt FROM customers").get() as {
+        cnt: number;
+      };
+      if (count.cnt === 0) {
+        const insert = db.prepare(
+          `INSERT INTO customers (full_name, email, phone, street, city, state, zip_code)
+           VALUES (@fullName, @email, @phone, @street, @city, @state, @zipCode)`
+        );
+        const seedAll = db.transaction(() => {
+          for (const customer of seedCustomers) {
+            insert.run(customer);
+          }
+        });
+        seedAll();
+      }
+    },
   },
 ];
 
@@ -83,7 +121,7 @@ function runMigrations(database: Database.Database): void {
 
   for (const migration of migrations) {
     if (migration.version > currentVersion) {
-      database.exec(migration.sql);
+      migration.run(database);
       database.pragma(`user_version = ${migration.version}`);
       currentVersion = migration.version;
     }
