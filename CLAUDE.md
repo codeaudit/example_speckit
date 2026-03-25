@@ -7,6 +7,7 @@ Auto-generated from all feature plans. Last updated: 2026-03-25
 - SQLite via better-sqlite3 (existing `data/loan-app.db`), new migration v3 for `customers` table (002-customer-prefill-display)
 - TypeScript 5.x (strict mode) — existing + Next.js 15 (App Router), Tailwind CSS 4.x, better-sqlite3, nanoid — all existing (003-impeccable-design-polish)
 - SQLite via better-sqlite3 (existing `data/loan-app.db`) — no changes (003-impeccable-design-polish)
+- SQLite via better-sqlite3 (existing `data/loan-app.db`) — no schema changes; email-based join at query time (004-enhanced-officer-workflow)
 
 - TypeScript 5.x (strict mode) + Next.js 15 (App Router), shadcn/ui, (001-loan-processing-app)
 
@@ -26,10 +27,10 @@ npm test && npm run lint
 TypeScript 5.x (strict mode): Follow standard conventions
 
 ## Recent Changes
+- 004-enhanced-officer-workflow: Added TypeScript 5.x (strict mode) — existing + Next.js 15 (App Router), Tailwind CSS 4.x, better-sqlite3, nanoid — all existing
 - 003-impeccable-design-polish: Added TypeScript 5.x (strict mode) — existing + Next.js 15 (App Router), Tailwind CSS 4.x, better-sqlite3, nanoid — all existing
 - 002-customer-prefill-display: Added TypeScript 5.x (strict mode) — same as feature 001 + Next.js 15 (App Router), better-sqlite3, Tailwind CSS, nanoid — all existing
 
-- 001-loan-processing-app: Added TypeScript 5.x (strict mode) + Next.js 15 (App Router), shadcn/ui,
 
 <!-- MANUAL ADDITIONS START -->
 

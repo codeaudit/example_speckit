@@ -118,3 +118,17 @@ export interface CustomerSummary {
   fullName: string;
   email: string;
 }
+
+export interface CustomerWithAppCount extends CustomerSummary {
+  applicationCount: number;
+}
+
+export interface CustomerApplication {
+  id: number;
+  referenceNumber: string;
+  loanAmount: number;
+  transactionType: string;
+  status: ApplicationStatus;
+  qualificationStatus: "Qualified" | "Not Qualified" | "N/A";
+  createdAt: string;
+}

@@ -228,14 +228,25 @@ capability.
 - **SC-006**: The existing 85 tests continue to pass after this
   feature is implemented (zero regressions).
 
+## Clarifications
+
+### Session 2026-03-25
+
+- Q: Should the user's theme choice persist across browser sessions? → A: Session-only (resets on tab close)
+- Q: Should the officer review use separate pages or inline panels? → A: Separate pages (/officer → /officer/customer/[id] → /officer/[appId])
+
 ## Assumptions
 
 - Loan applications are linked to customers by email address match
   (applicantEmail = customer.email). No foreign key relationship
   exists in the database — matching is done at query time.
 - The existing officer review page (`/officer`) will be restructured
-  to show customers instead of a flat application list. The existing
-  application detail and decision form components will be reused.
+  to show customers instead of a flat application list. Navigation
+  uses separate pages: `/officer` (customer list) →
+  `/officer/customer/[id]` (customer profile + loan list) →
+  `/officer/[appId]` (application review with decision form). The
+  existing application detail and decision form components will be
+  reused.
 - The theme toggle stores state in-memory (session-only). No
   server-side persistence or cookie/localStorage is used for theme
   preference, keeping the implementation simple.

@@ -26,7 +26,7 @@ async function getCustomer(id: number): Promise<Customer | null> {
   };
 }
 
-export default async function CustomerDetailPage({
+export default async function OfficerCustomerDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -42,19 +42,28 @@ export default async function CustomerDetailPage({
     <div className="space-y-8">
       <div>
         <Link
-          href="/customers"
+          href="/officer"
           className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
         >
-          &larr; Back to Customer Directory
+          &larr; Back to Customer List
         </Link>
       </div>
+
+      <h1 className="text-2xl font-bold dark:text-gray-100">
+        {customer.fullName}
+      </h1>
+
       <CustomerDetail customer={customer} />
 
       <div>
         <h2 className="mb-4 text-lg font-semibold dark:text-gray-100">
           Loan Applications
         </h2>
-        <CustomerApplications customerId={customer.id} />
+        <CustomerApplications
+          customerId={customer.id}
+          showReviewLink={true}
+          emptyMessage="No loan applications for this customer."
+        />
       </div>
     </div>
   );
