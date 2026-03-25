@@ -47,7 +47,7 @@ export default function ApplyPage() {
           </div>
         </div>
       ) : (
-        <div className="mx-auto max-w-md rounded-lg border border-green-200 bg-green-50 p-8 text-center shadow-sm dark:bg-green-900/20 dark:border-green-800">
+        <div className="mx-auto max-w-md animate-fade-in-up rounded-lg border border-green-200 bg-green-50 p-8 text-center shadow-sm dark:bg-green-900/20 dark:border-green-800">
           <div className="mb-4 text-4xl text-green-600 dark:text-green-400">&#10003;</div>
           <h2 className="mb-2 text-xl font-semibold text-green-800 dark:text-green-200">
             Application Submitted!
@@ -62,7 +62,7 @@ export default function ApplyPage() {
           <div className="flex flex-col gap-3">
             <button
               onClick={handleReset}
-              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-blue-700 hover:shadow-md active:scale-[0.98] active:shadow-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
               Submit Another Application
             </button>

@@ -22,18 +22,18 @@ function formatDate(dateStr: string): string {
 
 const qualificationBadge: Record<string, string> = {
   Qualified:
-    "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    "bg-green-100 text-green-800 shadow-sm ring-1 ring-inset ring-green-200/50 dark:bg-green-900 dark:text-green-200 dark:ring-green-400/20",
   "Not Qualified":
-    "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
-  "N/A": "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400",
+    "bg-red-100 text-red-800 shadow-sm ring-1 ring-inset ring-red-200/50 dark:bg-red-900 dark:text-red-200 dark:ring-red-400/20",
+  "N/A": "bg-gray-100 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-200/50 dark:bg-gray-700 dark:text-gray-400 dark:ring-gray-400/20",
 };
 
 const statusBadge: Record<string, string> = {
   Pending:
-    "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200",
+    "bg-amber-100 text-amber-800 shadow-sm ring-1 ring-inset ring-amber-200/50 dark:bg-amber-900 dark:text-amber-200 dark:ring-amber-400/20",
   Approved:
-    "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-  Rejected: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+    "bg-green-100 text-green-800 shadow-sm ring-1 ring-inset ring-green-200/50 dark:bg-green-900 dark:text-green-200 dark:ring-green-400/20",
+  Rejected: "bg-red-100 text-red-800 shadow-sm ring-1 ring-inset ring-red-200/50 dark:bg-red-900 dark:text-red-200 dark:ring-red-400/20",
 };
 
 interface CustomerApplicationsProps {
@@ -130,7 +130,7 @@ export default function CustomerApplications({
           {applications.map((app) => (
             <tr
               key={app.id}
-              className="hover:bg-gray-50 dark:hover:bg-gray-700/50"
+              className="transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-700/50"
             >
               <td className="whitespace-nowrap px-4 py-3 font-medium dark:text-gray-200">
                 {app.referenceNumber}

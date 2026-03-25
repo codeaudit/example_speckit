@@ -66,7 +66,7 @@ export default function CustomerSelect({ onSelect }: CustomerSelectProps) {
         placeholder="Search by name or email..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm ring-0 ring-blue-500/0 transition-all duration-150 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:ring-blue-400/40 dark:focus:border-blue-400"
       />
       {search && filtered.length > 0 && (
         <ul className="mt-2 max-h-48 overflow-y-auto rounded-md border border-gray-200 dark:border-gray-600 dark:bg-gray-700">
@@ -81,7 +81,7 @@ export default function CustomerSelect({ onSelect }: CustomerSelectProps) {
                   });
                   setSearch("");
                 }}
-                className="w-full px-3 py-2 text-left text-sm hover:bg-blue-50 focus-visible:bg-blue-50 focus-visible:outline-none dark:hover:bg-blue-900/30 dark:focus-visible:bg-blue-900/30"
+                className="w-full px-3 py-2 text-left text-sm transition-colors duration-150 hover:bg-blue-50 focus-visible:bg-blue-50 focus-visible:outline-none dark:hover:bg-blue-900/30 dark:focus-visible:bg-blue-900/30"
               >
                 <span className="font-medium text-gray-900 dark:text-gray-100">
                   {customer.fullName}

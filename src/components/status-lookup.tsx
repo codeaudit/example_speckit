@@ -20,9 +20,9 @@ function formatDate(dateStr: string): string {
 }
 
 const statusColors: Record<string, string> = {
-  Pending: "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200",
-  Approved: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-  Rejected: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+  Pending: "bg-amber-100 text-amber-800 shadow-sm ring-1 ring-inset ring-amber-200/50 dark:bg-amber-900 dark:text-amber-200 dark:ring-amber-400/20",
+  Approved: "bg-green-100 text-green-800 shadow-sm ring-1 ring-inset ring-green-200/50 dark:bg-green-900 dark:text-green-200 dark:ring-green-400/20",
+  Rejected: "bg-red-100 text-red-800 shadow-sm ring-1 ring-inset ring-red-200/50 dark:bg-red-900 dark:text-red-200 dark:ring-red-400/20",
 };
 
 export default function StatusLookup() {
@@ -69,31 +69,31 @@ export default function StatusLookup() {
           value={referenceNumber}
           onChange={(e) => setReferenceNumber(e.target.value)}
           placeholder="Enter your reference number"
-          className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+          className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm ring-0 ring-blue-500/0 transition-all duration-150 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:ring-blue-400/40 dark:focus:border-blue-400"
         />
         <button
           type="submit"
           disabled={loading}
-          className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+          className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-blue-700 hover:shadow-md active:scale-[0.98] active:shadow-none disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         >
           {loading ? "Searching..." : "Search"}
         </button>
       </form>
 
       {notFound && (
-        <div className="mt-6 rounded-md bg-yellow-50 p-4 text-sm text-yellow-800 dark:bg-amber-900/20 dark:text-amber-300">
+        <div className="mt-6 animate-fade-in-up rounded-md bg-yellow-50 p-4 text-sm text-yellow-800 dark:bg-amber-900/20 dark:text-amber-300">
           No application found with that reference number.
         </div>
       )}
 
       {error && (
-        <div className="mt-6 rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
+        <div className="mt-6 animate-fade-in-up rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
           {error}
         </div>
       )}
 
       {result && (
-        <div className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div className="mt-6 animate-fade-in-up rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-lg font-semibold dark:text-gray-100">{result.applicantName}</h3>
             <span

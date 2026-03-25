@@ -70,7 +70,7 @@ export default function OfficerCustomerList() {
         </thead>
         <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
           {customers.map((customer) => (
-            <tr key={customer.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+            <tr key={customer.id} className="transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-700/50">
               <td className="whitespace-nowrap px-6 py-4">
                 <Link
                   href={`/officer/customer/${customer.id}`}

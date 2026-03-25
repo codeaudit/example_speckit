@@ -96,7 +96,7 @@ export default function ApplicationList() {
         </thead>
         <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
           {applications.map((app) => (
-            <tr key={app.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+            <tr key={app.id} className="transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-700/50">
               <td className="px-4 py-3 font-medium dark:text-gray-200">{app.applicantName}</td>
               <td className="px-4 py-3 text-right">
                 {formatCurrency(app.loanAmount)}
@@ -106,11 +106,11 @@ export default function ApplicationList() {
                 {app.qualified === null ? (
                   <span className="text-gray-400 dark:text-gray-500">N/A</span>
                 ) : app.qualified ? (
-                  <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
+                  <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800 shadow-sm ring-1 ring-inset ring-green-200/50 dark:bg-green-900 dark:text-green-200 dark:ring-green-400/20">
                     Qualified
                   </span>
                 ) : (
-                  <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-200">
+                  <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800 shadow-sm ring-1 ring-inset ring-red-200/50 dark:bg-red-900 dark:text-red-200 dark:ring-red-400/20">
                     Not Qualified
                   </span>
                 )}

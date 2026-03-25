@@ -32,12 +32,12 @@ export default function ApplicationDetail({
           <p className="text-sm text-gray-500 dark:text-gray-400">Ref: {a.referenceNumber}</p>
         </div>
         <span
-          className={`rounded-full px-3 py-1 text-xs font-medium ${
+          className={`rounded-full px-3 py-1 text-xs font-medium shadow-sm ring-1 ring-inset ${
             a.status === "Approved"
-              ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+              ? "bg-green-100 text-green-800 ring-green-200/50 dark:bg-green-900 dark:text-green-200 dark:ring-green-400/20"
               : a.status === "Rejected"
-                ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
-                : "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200"
+                ? "bg-red-100 text-red-800 ring-red-200/50 dark:bg-red-900 dark:text-red-200 dark:ring-red-400/20"
+                : "bg-amber-100 text-amber-800 ring-amber-200/50 dark:bg-amber-900 dark:text-amber-200 dark:ring-amber-400/20"
           }`}
         >
           {a.status}

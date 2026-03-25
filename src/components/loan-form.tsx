@@ -92,14 +92,14 @@ export default function LoanForm({ onSuccess, prefillName, prefillEmail }: LoanF
   }
 
   const fieldClass =
-    "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400";
+    "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm ring-0 ring-blue-500/0 transition-all duration-150 focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:ring-blue-400/40 dark:focus:border-blue-400";
   const labelClass = "block text-sm font-medium text-gray-700 dark:text-gray-300";
-  const errorClass = "mt-1 text-xs text-red-600 dark:text-red-400";
+  const errorClass = "mt-1 animate-fade-in-up text-xs text-red-600 dark:text-red-400";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {generalError && (
-        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
+        <div className="animate-fade-in-up rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
           {generalError}
         </div>
       )}
@@ -328,7 +328,7 @@ export default function LoanForm({ onSuccess, prefillName, prefillEmail }: LoanF
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        className="w-full rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-blue-700 hover:shadow-md active:scale-[0.98] active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
       >
         {loading ? "Submitting..." : "Submit Application"}
       </button>

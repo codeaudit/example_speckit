@@ -42,11 +42,11 @@ export default function QualificationSummary({
       <div className="mb-4 flex items-center gap-3">
         <h3 className="text-base font-semibold">Qualification Summary</h3>
         {data.qualified ? (
-          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
+          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800 shadow-sm ring-1 ring-inset ring-green-200/50 dark:bg-green-900 dark:text-green-200 dark:ring-green-400/20">
             Qualified
           </span>
         ) : (
-          <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-200">
+          <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-800 shadow-sm ring-1 ring-inset ring-red-200/50 dark:bg-red-900 dark:text-red-200 dark:ring-red-400/20">
             Not Qualified
           </span>
         )}
