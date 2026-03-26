@@ -1,6 +1,6 @@
 # example_speckit Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-03-25
+Auto-generated from all feature plans. Last updated: 2026-03-26
 
 ## Active Technologies
 - TypeScript 5.x (strict mode) — same as feature 001 + Next.js 15 (App Router), better-sqlite3, Tailwind CSS, nanoid — all existing (002-customer-prefill-display)
@@ -9,6 +9,8 @@ Auto-generated from all feature plans. Last updated: 2026-03-25
 - SQLite via better-sqlite3 (existing `data/loan-app.db`) — no changes (003-impeccable-design-polish)
 - SQLite via better-sqlite3 (existing `data/loan-app.db`) — no schema changes; email-based join at query time (004-enhanced-officer-workflow)
 - TypeScript 5.x (strict mode) + Next.js 15 (App Router), Tailwind CSS 4.x, better-sqlite3, nanoid — all existing (005-impeccable-visual-upgrade)
+- TypeScript 6.x (strict mode) + Next.js 16.2.1 (App Router), React 19.2.4, Tailwind CSS 4.2.2, PostCSS 8.5.8 (006-fanniemae-branding)
+- SQLite via better-sqlite3 (no changes) (006-fanniemae-branding)
 
 - TypeScript 5.x (strict mode) + Next.js 15 (App Router), shadcn/ui, (001-loan-processing-app)
 
@@ -28,9 +30,9 @@ npm test && npm run lint
 TypeScript 5.x (strict mode): Follow standard conventions
 
 ## Recent Changes
+- 006-fanniemae-branding: Added TypeScript 6.x (strict mode) + Next.js 16.2.1 (App Router), React 19.2.4, Tailwind CSS 4.2.2, PostCSS 8.5.8
 - 005-impeccable-visual-upgrade: Added TypeScript 5.x (strict mode) + Next.js 15 (App Router), Tailwind CSS 4.x, better-sqlite3, nanoid — all existing
 - 004-enhanced-officer-workflow: Added TypeScript 5.x (strict mode) — existing + Next.js 15 (App Router), Tailwind CSS 4.x, better-sqlite3, nanoid — all existing
-- 003-impeccable-design-polish: Added TypeScript 5.x (strict mode) — existing + Next.js 15 (App Router), Tailwind CSS 4.x, better-sqlite3, nanoid — all existing
 
 
 <!-- MANUAL ADDITIONS START -->
