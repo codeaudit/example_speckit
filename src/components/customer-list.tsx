@@ -10,43 +10,43 @@ interface CustomerListProps {
 export default function CustomerList({ customers }: CustomerListProps) {
   if (customers.length === 0) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-white p-8 text-center dark:border-gray-700 dark:bg-gray-800">
-        <p className="text-sm text-gray-500 dark:text-gray-400">No customers found</p>
+      <div className="rounded-lg border border-border-default bg-bg-page p-8 text-center">
+        <p className="text-sm text-text-muted">No customers found</p>
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
-      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-        <thead className="bg-gray-50 dark:bg-gray-800/50">
+    <div className="overflow-hidden rounded-lg border border-border-default bg-bg-page">
+      <table className="min-w-full divide-y divide-border-default">
+        <thead className="bg-bg-section">
           <tr>
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400"
+              className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted"
             >
               Name
             </th>
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400"
+              className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted"
             >
               Email
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+        <tbody className="divide-y divide-border-default">
           {customers.map((customer) => (
-            <tr key={customer.id} className="transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+            <tr key={customer.id} className="transition-colors duration-150 hover:bg-bg-section">
               <td className="whitespace-nowrap px-6 py-4">
                 <Link
                   href={`/customers/${customer.id}`}
-                  className="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 rounded"
+                  className="text-sm font-medium text-brand-primary hover:text-brand-interactive focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-interactive rounded"
                 >
                   {customer.fullName}
                 </Link>
               </td>
-              <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
+              <td className="whitespace-nowrap px-6 py-4 text-sm text-text-muted">
                 {customer.email}
               </td>
             </tr>

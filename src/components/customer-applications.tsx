@@ -22,18 +22,18 @@ function formatDate(dateStr: string): string {
 
 const qualificationBadge: Record<string, string> = {
   Qualified:
-    "bg-green-100 text-green-800 shadow-sm ring-1 ring-inset ring-green-200/50 dark:bg-green-900 dark:text-green-200 dark:ring-green-400/20",
+    "bg-status-approved-bg text-status-approved shadow-sm ring-1 ring-inset ring-status-approved/20",
   "Not Qualified":
-    "bg-red-100 text-red-800 shadow-sm ring-1 ring-inset ring-red-200/50 dark:bg-red-900 dark:text-red-200 dark:ring-red-400/20",
-  "N/A": "bg-gray-100 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-200/50 dark:bg-gray-700 dark:text-gray-400 dark:ring-gray-400/20",
+    "bg-status-rejected-bg text-status-rejected shadow-sm ring-1 ring-inset ring-status-rejected/20",
+  "N/A": "bg-bg-section text-text-muted shadow-sm ring-1 ring-inset ring-border-default",
 };
 
 const statusBadge: Record<string, string> = {
   Pending:
-    "bg-amber-100 text-amber-800 shadow-sm ring-1 ring-inset ring-amber-200/50 dark:bg-amber-900 dark:text-amber-200 dark:ring-amber-400/20",
+    "bg-status-pending-bg text-status-pending shadow-sm ring-1 ring-inset ring-status-pending/20",
   Approved:
-    "bg-green-100 text-green-800 shadow-sm ring-1 ring-inset ring-green-200/50 dark:bg-green-900 dark:text-green-200 dark:ring-green-400/20",
-  Rejected: "bg-red-100 text-red-800 shadow-sm ring-1 ring-inset ring-red-200/50 dark:bg-red-900 dark:text-red-200 dark:ring-red-400/20",
+    "bg-status-approved-bg text-status-approved shadow-sm ring-1 ring-inset ring-status-approved/20",
+  Rejected: "bg-status-rejected-bg text-status-rejected shadow-sm ring-1 ring-inset ring-status-rejected/20",
 };
 
 interface CustomerApplicationsProps {
@@ -64,15 +64,15 @@ export default function CustomerApplications({
 
   if (loading) {
     return (
-      <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div className="overflow-hidden rounded-lg border border-border-default bg-bg-page shadow-sm">
         <div className="p-4 space-y-3">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="flex gap-4 animate-pulse">
-              <div className="h-4 w-28 rounded bg-gray-200 dark:bg-gray-700" />
-              <div className="h-4 w-24 rounded bg-gray-200 dark:bg-gray-700" />
-              <div className="h-4 w-20 rounded bg-gray-200 dark:bg-gray-700" />
-              <div className="h-4 w-20 rounded bg-gray-200 dark:bg-gray-700" />
-              <div className="h-4 w-16 rounded bg-gray-200 dark:bg-gray-700" />
+              <div className="h-4 w-28 rounded bg-bg-section" />
+              <div className="h-4 w-24 rounded bg-bg-section" />
+              <div className="h-4 w-20 rounded bg-bg-section" />
+              <div className="h-4 w-20 rounded bg-bg-section" />
+              <div className="h-4 w-16 rounded bg-bg-section" />
             </div>
           ))}
         </div>
@@ -82,7 +82,7 @@ export default function CustomerApplications({
 
   if (error) {
     return (
-      <div className="rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
+      <div className="rounded-md bg-status-rejected-bg p-4 text-sm text-status-rejected">
         {error}
       </div>
     );
@@ -90,55 +90,55 @@ export default function CustomerApplications({
 
   if (applications.length === 0) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-white p-8 text-center dark:border-gray-700 dark:bg-gray-800">
-        <p className="text-sm text-gray-500 dark:text-gray-400">{emptyMessage}</p>
+      <div className="rounded-lg border border-border-default bg-bg-page p-8 text-center">
+        <p className="text-sm text-text-muted">{emptyMessage}</p>
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <table className="min-w-full divide-y divide-gray-200 text-sm dark:divide-gray-700">
-        <thead className="bg-gray-50 dark:bg-gray-800/50">
+    <div className="overflow-x-auto rounded-lg border border-border-default bg-bg-page shadow-sm">
+      <table className="min-w-full divide-y divide-border-default text-sm">
+        <thead className="bg-bg-section">
           <tr>
-            <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">
+            <th className="px-4 py-3 text-left font-medium text-text-muted">
               Reference
             </th>
-            <th className="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-400">
+            <th className="px-4 py-3 text-right font-medium text-text-muted">
               Loan Amount
             </th>
-            <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">
+            <th className="px-4 py-3 text-left font-medium text-text-muted">
               Type
             </th>
-            <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">
+            <th className="px-4 py-3 text-left font-medium text-text-muted">
               Qualification
             </th>
-            <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">
+            <th className="px-4 py-3 text-left font-medium text-text-muted">
               Status
             </th>
-            <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">
+            <th className="px-4 py-3 text-left font-medium text-text-muted">
               Date
             </th>
             {showReviewLink && (
-              <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">
+              <th className="px-4 py-3 text-left font-medium text-text-muted">
                 Action
               </th>
             )}
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+        <tbody className="divide-y divide-border-default">
           {applications.map((app) => (
             <tr
               key={app.id}
-              className="transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-700/50"
+              className="transition-colors duration-150 hover:bg-bg-section"
             >
-              <td className="whitespace-nowrap px-4 py-3 font-medium dark:text-gray-200">
+              <td className="whitespace-nowrap px-4 py-3 font-medium">
                 {app.referenceNumber}
               </td>
-              <td className="whitespace-nowrap px-4 py-3 text-right dark:text-gray-200">
+              <td className="whitespace-nowrap px-4 py-3 text-right">
                 {formatCurrency(app.loanAmount)}
               </td>
-              <td className="whitespace-nowrap px-4 py-3 capitalize dark:text-gray-200">
+              <td className="whitespace-nowrap px-4 py-3 capitalize">
                 {app.transactionType}
               </td>
               <td className="whitespace-nowrap px-4 py-3">
@@ -159,7 +159,7 @@ export default function CustomerApplications({
                   {app.status}
                 </span>
               </td>
-              <td className="whitespace-nowrap px-4 py-3 text-gray-500 dark:text-gray-400">
+              <td className="whitespace-nowrap px-4 py-3 text-text-muted">
                 {formatDate(app.createdAt)}
               </td>
               {showReviewLink && (
@@ -167,12 +167,12 @@ export default function CustomerApplications({
                   {app.status === "Pending" ? (
                     <Link
                       href={`/officer/${app.id}`}
-                      className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 rounded"
+                      className="font-medium text-brand-primary hover:text-brand-interactive focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-interactive rounded"
                     >
                       Review
                     </Link>
                   ) : (
-                    <span className="text-gray-400 dark:text-gray-500">—</span>
+                    <span className="text-text-muted">—</span>
                   )}
                 </td>
               )}

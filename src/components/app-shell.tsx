@@ -1,51 +1,47 @@
-"use client";
-
 import Link from "next/link";
-import { ThemeProvider } from "@/lib/theme-context";
-import ThemeToggle from "@/components/theme-toggle";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider>
-      <nav className="bg-white shadow-sm dark:bg-gray-800">
+    <>
+      <nav className="bg-bg-page border-b border-border-default">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-semibold text-gray-900 dark:text-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 rounded"
+            className="flex items-baseline gap-1.5 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-interactive"
           >
-            LoanPro
+            <span className="text-lg font-bold text-brand-primary">LoanPro</span>
+            <span className="text-sm font-normal text-text-muted">by Fannie Mae</span>
           </Link>
           <div className="flex items-center gap-6 text-sm">
             <Link
               href="/apply"
-              className="text-gray-600 transition-colors duration-150 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 rounded"
+              className="text-brand-primary transition-colors duration-150 hover:text-brand-interactive rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-interactive"
             >
               Apply
             </Link>
             <Link
               href="/status"
-              className="text-gray-600 transition-colors duration-150 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 rounded"
+              className="text-brand-primary transition-colors duration-150 hover:text-brand-interactive rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-interactive"
             >
               Check Status
             </Link>
             <Link
               href="/customers"
-              className="text-gray-600 transition-colors duration-150 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 rounded"
+              className="text-brand-primary transition-colors duration-150 hover:text-brand-interactive rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-interactive"
             >
               Customers
             </Link>
             <Link
               href="/officer"
-              className="text-gray-600 transition-colors duration-150 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 rounded"
+              className="text-brand-primary transition-colors duration-150 hover:text-brand-interactive rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-interactive"
             >
               Officer Review
             </Link>
-            <ThemeToggle />
           </div>
         </div>
-        <div className="h-0.5 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 dark:from-blue-400 dark:via-blue-500 dark:to-blue-600" />
+        <div className="h-0.5 bg-brand-primary" />
       </nav>
       <main className="mx-auto max-w-5xl px-6 py-8">{children}</main>
-    </ThemeProvider>
+    </>
   );
 }

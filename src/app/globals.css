@@ -1,6 +1,24 @@
 @import "tailwindcss";
 
-@variant dark (&:where(.dark, .dark *));
+@theme {
+  --color-brand-primary: #23517C;
+  --color-brand-interactive: #0C77BA;
+  --color-brand-interactive-alt: #1C6FA3;
+  --color-text-primary: #121212;
+  --color-text-muted: #717171;
+  --color-bg-page: #FFFFFF;
+  --color-bg-section: #F3F5F9;
+  --color-bg-input: #F1F1EF;
+  --color-border-default: #CAC8C3;
+  --color-border-alt: #7E8C9A;
+  --color-status-approved: #16a34a;
+  --color-status-approved-bg: #f0fdf4;
+  --color-status-rejected: #dc2626;
+  --color-status-rejected-bg: #fef2f2;
+  --color-status-pending: #d97706;
+  --color-status-pending-bg: #fffbeb;
+  --font-family-sans: 'Source Sans Pro', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
 
 @keyframes fade-in-up {
   from {
