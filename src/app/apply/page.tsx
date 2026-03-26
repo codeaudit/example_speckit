@@ -38,7 +38,7 @@ export default function ApplyPage() {
       {showForm ? (
         <div className="mx-auto max-w-2xl space-y-4">
           <CustomerSelect onSelect={handleCustomerSelect} />
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:bg-gray-800 dark:border-gray-700">
+          <div className="rounded-lg border border-border-default bg-bg-page p-6 shadow-sm">
             <LoanForm
               onSuccess={handleSuccess}
               prefillName={prefillName}
@@ -47,28 +47,28 @@ export default function ApplyPage() {
           </div>
         </div>
       ) : (
-        <div className="mx-auto max-w-md rounded-lg border border-green-200 bg-green-50 p-8 text-center shadow-sm dark:bg-green-900/20 dark:border-green-800">
-          <div className="mb-4 text-4xl text-green-600 dark:text-green-400">&#10003;</div>
-          <h2 className="mb-2 text-xl font-semibold text-green-800 dark:text-green-200">
+        <div className="mx-auto max-w-md animate-fade-in-up rounded-lg border border-status-approved bg-status-approved-bg p-8 text-center shadow-sm">
+          <div className="mb-4 text-4xl text-status-approved">&#10003;</div>
+          <h2 className="mb-2 text-xl font-semibold text-status-approved">
             Application Submitted!
           </h2>
-          <p className="mb-4 text-sm text-green-700 dark:text-green-300">
+          <p className="mb-4 text-sm text-status-approved">
             Your application has been received and is being reviewed.
           </p>
-          <p className="mb-1 text-sm text-gray-600 dark:text-gray-400">Your Reference Number:</p>
-          <p className="mb-6 text-2xl font-bold tracking-wide text-gray-900 dark:text-gray-100">
+          <p className="mb-1 text-sm text-text-muted">Your Reference Number:</p>
+          <p className="mb-6 text-2xl font-bold tracking-wide text-text-primary">
             {referenceNumber}
           </p>
           <div className="flex flex-col gap-3">
             <button
               onClick={handleReset}
-              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              className="rounded-md bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-brand-interactive hover:shadow-md active:scale-[0.98] active:shadow-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-interactive"
             >
               Submit Another Application
             </button>
             <Link
               href="/status"
-              className="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+              className="text-sm font-medium text-brand-primary hover:text-brand-interactive"
             >
               Check Status
             </Link>

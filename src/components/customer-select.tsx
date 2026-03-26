@@ -34,16 +34,16 @@ export default function CustomerSelect({ onSelect }: CustomerSelectProps) {
 
   if (loading) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
-        <div className="space-y-2 animate-pulse"><div className="h-4 w-40 rounded bg-gray-200 dark:bg-gray-700" /><div className="h-8 w-full rounded bg-gray-200 dark:bg-gray-700" /></div>
+      <div className="rounded-lg border border-border-default bg-bg-page p-4">
+        <div className="space-y-2 animate-pulse"><div className="h-4 w-40 rounded bg-bg-section" /><div className="h-8 w-full rounded bg-bg-section" /></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-900/20">
-        <p className="text-sm text-red-700 dark:text-red-400">{error}</p>
+      <div className="rounded-lg border border-status-rejected bg-status-rejected-bg p-4">
+        <p className="text-sm text-status-rejected">{error}</p>
       </div>
     );
   }
@@ -53,10 +53,10 @@ export default function CustomerSelect({ onSelect }: CustomerSelectProps) {
   }
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+    <div className="rounded-lg border border-border-default bg-bg-page p-4">
       <label
         htmlFor="customerSearch"
-        className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        className="block text-sm font-medium text-text-primary"
       >
         Select an existing customer (optional)
       </label>
@@ -66,10 +66,10 @@ export default function CustomerSelect({ onSelect }: CustomerSelectProps) {
         placeholder="Search by name or email..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+        className="mt-1 block w-full rounded-md border border-border-default px-3 py-2 text-sm shadow-sm ring-0 ring-brand-interactive/0 transition-all duration-150 focus:ring-2 focus:ring-brand-interactive/40 focus:border-brand-interactive focus:outline-none"
       />
       {search && filtered.length > 0 && (
-        <ul className="mt-2 max-h-48 overflow-y-auto rounded-md border border-gray-200 dark:border-gray-600 dark:bg-gray-700">
+        <ul className="mt-2 max-h-48 overflow-y-auto rounded-md border border-border-default">
           {filtered.map((customer) => (
             <li key={customer.id}>
               <button
@@ -81,19 +81,19 @@ export default function CustomerSelect({ onSelect }: CustomerSelectProps) {
                   });
                   setSearch("");
                 }}
-                className="w-full px-3 py-2 text-left text-sm hover:bg-blue-50 focus-visible:bg-blue-50 focus-visible:outline-none dark:hover:bg-blue-900/30 dark:focus-visible:bg-blue-900/30"
+                className="w-full px-3 py-2 text-left text-sm transition-colors duration-150 hover:bg-bg-section focus-visible:bg-bg-section focus-visible:outline-none"
               >
-                <span className="font-medium text-gray-900 dark:text-gray-100">
+                <span className="font-medium text-text-primary">
                   {customer.fullName}
                 </span>
-                <span className="ml-2 text-gray-500 dark:text-gray-400">{customer.email}</span>
+                <span className="ml-2 text-text-muted">{customer.email}</span>
               </button>
             </li>
           ))}
         </ul>
       )}
       {search && filtered.length === 0 && (
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">No matching customers</p>
+        <p className="mt-2 text-sm text-text-muted">No matching customers</p>
       )}
     </div>
   );
