@@ -33,29 +33,29 @@ export default function DecisionForm({
 
   if (existingDecision) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
-        <h4 className="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+      <div className="rounded-xl bg-surface-container-low p-4">
+        <h4 className="mb-2 text-sm font-semibold text-on-surface">
           Decision Made
         </h4>
         <p className="text-sm">
-          <span className="font-medium">Type:</span>{" "}
+          <span className="font-medium text-on-surface-variant">Type:</span>{" "}
           <span
             className={
               existingDecision.decisionType === "Approved"
-                ? "text-green-700 dark:text-green-400"
-                : "text-red-700 dark:text-red-400"
+                ? "text-green-700"
+                : "text-error"
             }
           >
             {existingDecision.decisionType}
           </span>
         </p>
         {existingDecision.decisionNote && (
-          <p className="mt-1 text-sm">
-            <span className="font-medium">Note:</span>{" "}
+          <p className="mt-1 text-sm text-on-surface">
+            <span className="font-medium text-on-surface-variant">Note:</span>{" "}
             {existingDecision.decisionNote}
           </p>
         )}
-        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+        <p className="mt-1 text-xs text-on-surface-variant">
           {formatDate(existingDecision.decidedAt)}
         </p>
       </div>
@@ -94,10 +94,10 @@ export default function DecisionForm({
 
   return (
     <div className="space-y-3">
-      <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Make a Decision</h4>
+      <h4 className="text-sm font-semibold text-on-surface">Make a Decision</h4>
 
       {error && (
-        <div className="rounded-md bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
+        <div className="rounded-xl bg-error-container p-3 text-sm text-on-error-container">
           {error}
         </div>
       )}
@@ -107,21 +107,21 @@ export default function DecisionForm({
         onChange={(e) => setNote(e.target.value)}
         placeholder="Optional decision note..."
         rows={3}
-        className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+        className="block w-full rounded-lg bg-surface-container-lowest px-3 py-2 text-sm text-on-surface outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-on-surface-variant/50"
       />
 
       <div className="flex gap-3">
         <button
           onClick={() => handleDecision("Approved")}
           disabled={loading}
-          className="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+          className="signature-gradient rounded-xl px-6 py-3 text-sm font-semibold text-on-primary disabled:opacity-50 hover:opacity-90 transition-opacity"
         >
           {loading ? "Submitting..." : "Approve"}
         </button>
         <button
           onClick={() => handleDecision("Rejected")}
           disabled={loading}
-          className="rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+          className="rounded-xl border border-outline-variant px-6 py-3 text-sm font-semibold text-on-secondary-fixed-variant bg-transparent disabled:opacity-50 hover:bg-surface-container-low transition-colors"
         >
           {loading ? "Submitting..." : "Reject"}
         </button>

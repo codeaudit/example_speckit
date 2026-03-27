@@ -36,20 +36,20 @@ export default function OfficerDetailPage() {
   if (loading) {
     return (
       <div className="space-y-6">
-        <div className="h-4 w-32 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
-        <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-800">
-          <div className="h-6 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+        <div className="h-4 w-32 animate-pulse rounded bg-surface-container-high" />
+        <div className="space-y-4 rounded-xl bg-surface-container-lowest p-5">
+          <div className="h-6 w-48 animate-pulse rounded bg-surface-container-high" />
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
-            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+            <div className="h-4 w-full animate-pulse rounded bg-surface-container-high" />
+            <div className="h-4 w-full animate-pulse rounded bg-surface-container-high" />
           </div>
         </div>
-        <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-800">
-          <div className="h-5 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+        <div className="space-y-4 rounded-xl bg-surface-container-lowest p-5">
+          <div className="h-5 w-36 animate-pulse rounded bg-surface-container-high" />
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
-            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
-            <div className="h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+            <div className="h-4 w-full animate-pulse rounded bg-surface-container-high" />
+            <div className="h-4 w-full animate-pulse rounded bg-surface-container-high" />
+            <div className="h-4 w-full animate-pulse rounded bg-surface-container-high" />
           </div>
         </div>
       </div>
@@ -59,12 +59,12 @@ export default function OfficerDetailPage() {
   if (error) {
     return (
       <div>
-        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
+        <div className="rounded-xl bg-error-container p-4 text-sm text-on-error-container">
           {error}
         </div>
         <Link
           href="/officer"
-          className="mt-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+          className="mt-4 inline-block text-sm font-medium text-primary hover:text-primary-container"
         >
           Back to Applications
         </Link>
@@ -78,7 +78,7 @@ export default function OfficerDetailPage() {
     <div>
       <Link
         href="/officer"
-        className="mb-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+        className="mb-4 inline-block text-sm font-medium text-primary hover:text-primary-container"
       >
         &larr; Back to Applications
       </Link>

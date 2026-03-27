@@ -43,7 +43,7 @@ export default async function CustomerDetailPage({
       <div>
         <Link
           href="/customers"
-          className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+          className="text-sm text-primary hover:text-primary-container"
         >
           &larr; Back to Customer Directory
         </Link>
@@ -51,7 +51,7 @@ export default async function CustomerDetailPage({
       <CustomerDetail customer={customer} />
 
       <div>
-        <h2 className="mb-4 text-lg font-semibold dark:text-gray-100">
+        <h2 className="mb-4 text-lg font-semibold font-headline text-on-surface">
           Loan Applications
         </h2>
         <CustomerApplications customerId={customer.id} />

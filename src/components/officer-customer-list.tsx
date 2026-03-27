@@ -22,13 +22,13 @@ export default function OfficerCustomerList() {
 
   if (loading) {
     return (
-      <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div className="overflow-hidden rounded-xl bg-surface-container-lowest">
         <div className="p-4 space-y-3">
           {[...Array(5)].map((_, i) => (
             <div key={i} className="flex gap-4 animate-pulse">
-              <div className="h-4 w-40 rounded bg-gray-200 dark:bg-gray-700" />
-              <div className="h-4 w-48 rounded bg-gray-200 dark:bg-gray-700" />
-              <div className="h-4 w-12 rounded bg-gray-200 dark:bg-gray-700" />
+              <div className="h-4 w-40 rounded bg-surface-container-high" />
+              <div className="h-4 w-48 rounded bg-surface-container-high" />
+              <div className="h-4 w-12 rounded bg-surface-container-high" />
             </div>
           ))}
         </div>
@@ -38,7 +38,7 @@ export default function OfficerCustomerList() {
 
   if (error) {
     return (
-      <div className="rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
+      <div className="rounded-xl bg-error-container p-4 text-sm text-on-error-container">
         {error}
       </div>
     );
@@ -46,43 +46,43 @@ export default function OfficerCustomerList() {
 
   if (customers.length === 0) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-white p-8 text-center dark:border-gray-700 dark:bg-gray-800">
-        <p className="text-sm text-gray-500 dark:text-gray-400">No customers found.</p>
+      <div className="rounded-xl bg-surface-container-lowest p-8 text-center">
+        <p className="text-sm text-on-surface-variant">No customers found.</p>
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <table className="min-w-full divide-y divide-gray-200 text-sm dark:divide-gray-700">
-        <thead className="bg-gray-50 dark:bg-gray-800/50">
+    <div className="overflow-hidden rounded-xl bg-surface-container-lowest">
+      <table className="min-w-full text-sm">
+        <thead className="bg-surface-container-high">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant">
               Customer Name
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant">
               Email
             </th>
-            <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-on-surface-variant">
               Applications
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+        <tbody>
           {customers.map((customer) => (
-            <tr key={customer.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+            <tr key={customer.id} className="hover:bg-surface-container-low transition-colors">
               <td className="whitespace-nowrap px-6 py-4">
                 <Link
                   href={`/officer/customer/${customer.id}`}
-                  className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 rounded"
+                  className="font-medium text-primary hover:text-primary-container focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary rounded"
                 >
                   {customer.fullName}
                 </Link>
               </td>
-              <td className="whitespace-nowrap px-6 py-4 text-gray-600 dark:text-gray-400">
+              <td className="whitespace-nowrap px-6 py-4 text-on-surface-variant">
                 {customer.email}
               </td>
-              <td className="whitespace-nowrap px-6 py-4 text-right text-gray-600 dark:text-gray-400">
+              <td className="whitespace-nowrap px-6 py-4 text-right text-on-surface-variant">
                 {customer.applicationCount}
               </td>
             </tr>

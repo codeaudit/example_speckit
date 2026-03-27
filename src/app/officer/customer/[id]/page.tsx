@@ -43,20 +43,20 @@ export default async function OfficerCustomerDetailPage({
       <div>
         <Link
           href="/officer"
-          className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+          className="text-sm text-primary hover:text-primary-container"
         >
           &larr; Back to Customer List
         </Link>
       </div>
 
-      <h1 className="text-2xl font-bold dark:text-gray-100">
+      <h1 className="text-2xl font-bold font-headline text-on-surface">
         {customer.fullName}
       </h1>
 
       <CustomerDetail customer={customer} />
 
       <div>
-        <h2 className="mb-4 text-lg font-semibold dark:text-gray-100">
+        <h2 className="mb-4 text-lg font-semibold font-headline text-on-surface">
           Loan Applications
         </h2>
         <CustomerApplications

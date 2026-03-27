@@ -92,21 +92,21 @@ export default function LoanForm({ onSuccess, prefillName, prefillEmail }: LoanF
   }
 
   const fieldClass =
-    "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400";
-  const labelClass = "block text-sm font-medium text-gray-700 dark:text-gray-300";
-  const errorClass = "mt-1 text-xs text-red-600 dark:text-red-400";
+    "mt-1 block w-full rounded-lg bg-surface-container-lowest px-3 py-2 text-sm text-on-surface outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-on-surface-variant/50";
+  const labelClass = "block text-sm font-medium text-on-surface-variant";
+  const errorClass = "mt-1 text-xs text-error";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {generalError && (
-        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
+        <div className="rounded-lg bg-error-container p-4 text-sm text-on-error-container">
           {generalError}
         </div>
       )}
 
       {/* Applicant Info */}
       <fieldset className="space-y-4">
-        <legend className="text-base font-semibold text-gray-900 dark:text-gray-100">
+        <legend className="text-base font-semibold text-on-surface font-headline">
           Applicant Information
         </legend>
 
@@ -145,7 +145,7 @@ export default function LoanForm({ onSuccess, prefillName, prefillEmail }: LoanF
 
       {/* Financial Info */}
       <fieldset className="space-y-4">
-        <legend className="text-base font-semibold text-gray-900 dark:text-gray-100">
+        <legend className="text-base font-semibold text-on-surface font-headline">
           Financial Information
         </legend>
 
@@ -204,7 +204,7 @@ export default function LoanForm({ onSuccess, prefillName, prefillEmail }: LoanF
 
       {/* Loan Details */}
       <fieldset className="space-y-4">
-        <legend className="text-base font-semibold text-gray-900 dark:text-gray-100">
+        <legend className="text-base font-semibold text-on-surface font-headline">
           Loan Details
         </legend>
 
@@ -286,7 +286,7 @@ export default function LoanForm({ onSuccess, prefillName, prefillEmail }: LoanF
 
       {/* Property Info */}
       <fieldset className="space-y-4">
-        <legend className="text-base font-semibold text-gray-900 dark:text-gray-100">
+        <legend className="text-base font-semibold text-on-surface font-headline">
           Property Information
         </legend>
 
@@ -328,7 +328,7 @@ export default function LoanForm({ onSuccess, prefillName, prefillEmail }: LoanF
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        className="w-full signature-gradient rounded-xl px-6 py-3 text-sm font-semibold text-on-primary disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-90 transition-opacity"
       >
         {loading ? "Submitting..." : "Submit Application"}
       </button>
