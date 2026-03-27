@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeProvider } from "@/lib/theme-context";
+import { RoleProvider, useRole } from "@/lib/role-context";
+import RoleSwitcher from "@/components/role-switcher";
 
 const officerNavLinks = [
-  { label: "Dashboard", href: "/officer", icon: "dashboard" },
   { label: "Applications", href: "/officer", icon: "description" },
   { label: "Customers", href: "/customers", icon: "group" },
   { label: "Settings", href: "#", icon: "settings" },
@@ -30,7 +31,9 @@ function OfficerSidebar({ pathname }: { pathname: string }) {
       {/* Nav links */}
       <nav className="flex-1 px-3 space-y-1">
         {officerNavLinks.map((link) => {
-          const isActive = pathname === link.href || (link.href !== "#" && pathname.startsWith(link.href) && link.href !== "/officer") || (link.href === "/officer" && (pathname === "/officer" || pathname.startsWith("/officer/")));
+          const isActive =
+            link.href !== "#" &&
+            (pathname === link.href || pathname.startsWith(link.href + "/"));
           return (
             <Link
               key={link.label}
@@ -50,6 +53,11 @@ function OfficerSidebar({ pathname }: { pathname: string }) {
         })}
       </nav>
 
+      {/* Role switcher */}
+      <div className="px-0 pt-2 border-t border-white/10 mt-2">
+        <RoleSwitcher variant="sidebar" />
+      </div>
+
       {/* Bottom actions */}
       <div className="px-3 pb-6 space-y-1">
         <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-on-primary/70 hover:bg-white/10 hover:text-on-primary transition-colors text-sm font-medium">
@@ -67,35 +75,48 @@ function OfficerSidebar({ pathname }: { pathname: string }) {
 
 function BorrowerHeader() {
   return (
-    <header className="bg-surface-container-lowest border-b border-outline-variant/20 h-16 flex items-center px-8">
+    <header className="bg-surface-container-lowest border-b border-outline-variant/20 h-16 flex items-center px-8 gap-4">
       <Link href="/" className="font-headline font-bold text-xl text-primary tracking-tight">
         LoanPro
       </Link>
+      <div className="ml-auto">
+        <RoleSwitcher variant="header" />
+      </div>
     </header>
   );
 }
 
 const officerRoutes = ["/officer", "/customers"];
 
-export default function AppShell({ children }: { children: React.ReactNode }) {
+function AppShellInner({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isOfficerRoute = officerRoutes.some(
-    (route) => pathname === route || pathname.startsWith(route + "/")
-  );
+  const { role } = useRole();
 
+  const isOfficerLayout =
+    role === "officer" ||
+    officerRoutes.some(
+      (route) => pathname === route || pathname.startsWith(route + "/")
+    );
+
+  return isOfficerLayout ? (
+    <>
+      <OfficerSidebar pathname={pathname} />
+      <main className="ml-[280px] min-h-screen bg-surface p-8">{children}</main>
+    </>
+  ) : (
+    <div className="min-h-screen bg-surface flex flex-col">
+      <BorrowerHeader />
+      <main className="flex-1 px-8 py-8 max-w-5xl mx-auto w-full">{children}</main>
+    </div>
+  );
+}
+
+export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider>
-      {isOfficerRoute ? (
-        <>
-          <OfficerSidebar pathname={pathname} />
-          <main className="ml-[280px] min-h-screen bg-surface p-8">{children}</main>
-        </>
-      ) : (
-        <div className="min-h-screen bg-surface flex flex-col">
-          <BorrowerHeader />
-          <main className="flex-1 px-8 py-8 max-w-5xl mx-auto w-full">{children}</main>
-        </div>
-      )}
+      <RoleProvider>
+        <AppShellInner>{children}</AppShellInner>
+      </RoleProvider>
     </ThemeProvider>
   );
 }

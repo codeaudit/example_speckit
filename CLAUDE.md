@@ -10,6 +10,8 @@ Auto-generated from all feature plans. Last updated: 2026-03-27
 - SQLite via better-sqlite3 (existing `data/loan-app.db`) — no schema changes; email-based join at query time (004-enhanced-officer-workflow)
 - TypeScript 6.x (strict mode) + Next.js 16.2.1 (App Router), Tailwind CSS 4.2.2, React 19.2.4, better-sqlite3, Vitest 3.x (009-stitch-ui-styling)
 - SQLite (no changes) (009-stitch-ui-styling)
+- TypeScript 6.x (strict mode) + Next.js 16.2 (App Router), React 19, Tailwind CSS 4.2, Vitest 3.x (010-role-switching-nav)
+- `sessionStorage` (client-side; no database changes) (010-role-switching-nav)
 
 - TypeScript 5.x (strict mode) + Next.js 15 (App Router), shadcn/ui, (001-loan-processing-app)
 
@@ -29,9 +31,9 @@ npm test && npm run lint
 TypeScript 5.x (strict mode): Follow standard conventions
 
 ## Recent Changes
+- 010-role-switching-nav: Added TypeScript 6.x (strict mode) + Next.js 16.2 (App Router), React 19, Tailwind CSS 4.2, Vitest 3.x
 - 009-stitch-ui-styling: Added TypeScript 6.x (strict mode) + Next.js 16.2.1 (App Router), Tailwind CSS 4.2.2, React 19.2.4, better-sqlite3, Vitest 3.x
 - 004-enhanced-officer-workflow: Added TypeScript 5.x (strict mode) — existing + Next.js 15 (App Router), Tailwind CSS 4.x, better-sqlite3, nanoid — all existing
-- 003-impeccable-design-polish: Added TypeScript 5.x (strict mode) — existing + Next.js 15 (App Router), Tailwind CSS 4.x, better-sqlite3, nanoid — all existing
 
 
 <!-- MANUAL ADDITIONS START -->
